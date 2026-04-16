@@ -9,7 +9,7 @@ const PrivateRoute = ({ children, roles }) => {
   if (!accessToken || !user) {
     if (refreshToken) {
       // Try to refresh token
-      axios.post('http://localhost:5000/api/auth/refresh', { refreshToken })
+      axios.post('https://user-management-system-2tv6.onrender.com/api/auth/refresh', { refreshToken })
         .then(res => {
           localStorage.setItem('accessToken', res.data.accessToken);
           localStorage.setItem('refreshToken', res.data.refreshToken);

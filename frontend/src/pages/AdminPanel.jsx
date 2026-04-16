@@ -30,7 +30,7 @@ const AdminPanel = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/users?search=${search}&role=${filterRole}`, {
+      const res = await axios.get(`https://user-management-system-2tv6.onrender.com/api/users?search=${search}&role=${filterRole}`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       setUsers(res.data.users || []);
@@ -49,7 +49,7 @@ const AdminPanel = () => {
   const handleCreateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/users', newUser, {
+      await axios.post(`${import.meta.env.VITE_BE_URL}/api/users`, newUser, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       alert("User Created Successfully");
@@ -66,7 +66,7 @@ const AdminPanel = () => {
     if (!confirmed) return;
     
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_BE_URL}/api/users/${id}`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       alert("User deleted successfully");
@@ -90,7 +90,7 @@ const AdminPanel = () => {
   const handleUpdateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/users/${editingUser}`, editFormData, {
+      await axios.put(`${import.meta.env.VITE_BE_URL}/api/users/${editingUser}`, editFormData, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       alert("User updated successfully");

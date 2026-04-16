@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users', {
+      const res = await axios.get(`${import.meta.env.VITE_BE_URL}/api/users`, {
         headers: { Authorization: `Bearer ${accessToken}` },
         params: { page, limit: 10, search, role, status }
       });
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const handleUpdate = async (id, updates) => {
     try {
-      await axios.put(`http://localhost:5000/api/users/${id}`, updates, {
+      await axios.put(`${import.meta.env.VITE_BE_URL}/api/users/${id}`, updates, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       fetchUsers();
@@ -41,7 +41,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (confirm('Deactivate user?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/users/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_BE_URL}/api/users/${id}`, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
         fetchUsers();
