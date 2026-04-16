@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-600 text-white p-4">
+    <nav className="sticky top-0 z-50 bg-blue-600/95 backdrop-blur-sm border-b border-blue-700/50 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex space-x-4">
           {user && <Link to="/profile" className="hover:underline">My Profile</Link>}
